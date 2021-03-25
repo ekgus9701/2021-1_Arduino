@@ -1,0 +1,50 @@
+float f; //double float는 아두이노에서는 4바이트
+f=3.14;
+10진수에서 소수점이있는 값을 컴퓨터에서 2진수로 처리할 때
+숫자 변환 원리상 정확한 2진수로 변환이 불가능함.
+따라서 소수점이 있는 숫자는 항상 오차가 있음.
+1/2,1/4,1/8...
+
+float로 선언된 변수와 숫자를 비교할 때는 
+절대 같다(==),같지않다(!=)를 사용하면 안됨. 
+대신 같거나 크다, 같거나 작다, 작다,크다와 같은 연산은 가능
+
+
+char a; 문자저장 8bit
+//java char:2byte
+
+short int(2-Byte)
+signed short int->short   -32765~+32768
+unsigned short int -> unsigned short    0~65535
+
+long int(4-Byte)
+signed long int  -21억~+21억
+unsigned long int 0~42억
+
+int i; i가 가지는 메모리 크기는?
+16 bit 이하의 컴퓨터에서는 short int,
+32 bit 이상의 컴퓨터에서는 long int로 동작
+
+기본 arduino uno는 16bit ->2byte
+
+short int 약 -30000~30000
+long int 약 -21억~21억
+
+pinMode(pin번호, 입/출력모드);
+pin번호:0-13,A0-A5(가급적 0과 1은 PC와 통신에 사용하므로
+안쓰는 것이 좋음)
+
+입/출력모드: INPUT,OUTPUT
+	INPUT_PULLUP
+
+digitalWrite(pin번호, 값)
+
+값: HIGH,LOW
+변수=digitalRead(pin번호);
+pin번호의 현재상태를 읽어 변수에 저장
+변수에 저장되는 값은 HIGH 또는 LOW
+
+푸쉬버튼: 버튼을 누르면 단자 연결. 떼면 단자 연결x
+
+gnd가 연결이 안됐으면 들어오는 값의 신호가 LOW인지 HIGH인지
+잘 구분이 안됨 -> 그래서 LOW라고 알려주려고 gnd에 연결
