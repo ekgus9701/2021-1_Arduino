@@ -1,0 +1,96 @@
+변수: 컴퓨터가 사용하는 메모리 공간에 붙인 이름
+컴퓨터는 공간에 값을 기록하거나 읽을 때
+주소(숫자)로 된 값을 사용한다.
+예약어는 사용불가
+
+M[200]=M[100]+M[110] []은 공간
+100=     40+    60
+->불편
+c=a+b;
+메모리 공간에 a,b,c 등의 이름을 붙여 사용하면 사람이 사용하기 편리함
+
+변수이름은 (첫번째글자)영문대/소문자로 시작,두번째 이후 글자는 _와 숫자 가능
+32글자 허용
+
+data type: 메모리 공간에 붙인 이름으로 사용할 수 있는 범위
+변수가 차지하는 메모리 공간의 크기
+
+표현 가능 범위를 벗어나지 않도록 주의
+
+int a;
+int b;
+
+bit,Byte,
+Binary digIT: BIT(bit), 2가지 상태중 하나를 나타냄, 각각을 기호로 사용하요 0,1로 표현
+Byte:8-bit
+WORD: 컴퓨터에서(Processor) 한번에 읽고 쓸 수 있는 데이터의 크기
+8-bit processor: WORD의 단위는 8-bit
+32-bit processor: WORD의 단위는 32-bit
+64-bit processor: WORD의 단위는 64-bit
+
+integer: 정수를 표현하기 위한 데이터 타입
+C언어: int i;
+short int->signed short int -> short int ->short
+	 unsigned short int -> unsigned short int -> unsigned short
+long int -> signed long int -> long int ->long
+	  unsigned long int -> unsigned long int ->unsigned long 
+
+int: 컴파일러에 따라(사용하는 프로세서에 따라) 데이터 크기가 2byte or 4byte
+processor <= 16bit int -> 16 bit short int
+          >=32 bit int -> 32 bit long int
+
+AVR 8bit ATmega 2560,Arduino UNO: Atmega328  int i->16bit
+ARM 32 bit	     Arduino DUE: ATSAM3X... int i->32bit
+PC 64bit int i->32bit
+
+결론 int i와 같이 데이터 타입을 사용하는 대신 short int i라고 쓰거나 
+    long int i라고 사용
+
+float,double 형태의 변수를 사용할 때 10진 소수는 정확히 2진 소수로 변환이 안되므로
+ 항상 오차가 누적되어 있는 것을 기억하고 사용.
+float f=3.14;
+f값을 읽으면 3.14가 정확히 나오지 않음(30자리까지 표현해보면 오차가 있음)
+
+변수가 저장할 수 있는 범위를 벗어나면 사람의 상식과 전혀 다른 결과를 가짐
+따라서 변수에 값을 저장할 때는 반드시 지정한 데이터 타입의 범위에 맞는 값이 사용되도록 주의
+
+short int -32768~+32767
+long int -21억 4천~ +21억 4천
+
+오차가 있어도 무방, 큰숫자. float double
+		      4byte  8byte
+word 단위: 컴퓨터가 1회에 읽거나 쓸 수 있는 데이터의 크기
+8bit: 1회에 8bit만 읽고쓸수있음. short int 2, long int 4번
+64bit: 1번
+MCU Arduino UNO 8bit, ATmega 2560
+
+결론: 오버플로우 발생하지 않도록 주의
+변수가 저장할 수 있는 범위를 벗어나면 사람의 상식과 전혀 다른 결과를 가짐
+
+<프로그램>
+
+1. 순차동작
+기록한 순서대로 한줄씩 실행
+
+2.조건에 따른 동작
+현재입력이 존재하면 a 동작
+입력이 없으면 b 동작
+
+if(조건 수식){
+조건수식 만족시 동작할 것 1
+2
+
+}
+else if(조건수식2){
+조건수식2 만족시 동작할것 1
+2
+}
+else{
+조건수식 불만족시 동작할 것 1
+2
+}
+
+조건수식과 무관하게 항상실행
+
+조건 수식을 만족할 때 실행할 내용은 {}로 묶음
+
