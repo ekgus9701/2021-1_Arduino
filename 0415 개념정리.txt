@@ -1,0 +1,19 @@
+1.빛감지 -조도센서
+CdS: Photo Resistor
+빛에 따라 저항이 변하는 소자
+저항+CdS연결 --> 밝기 측정
+
+Arduino UNO
+Photoresistor
+220ohm
+Breadboard
+jumper wire
+
+2. 초음파를 사용한 거리 센서
+센서와 물체 사이의 거리 측정: cm+오차
+
+센서+오차
+	오차에 대한 적절한 처리방법 -> 알고리즘, 통계학,확률
+
+3. 불꽃센서(빛, 파장)
+4. 온/습도 센서
