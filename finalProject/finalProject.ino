@@ -5,7 +5,7 @@
 #include <DHT_U.h>
 #include <Servo.h>
 Servo myservo;
-#define DHTPIN 5     // Digital pin connected to the DHT sensor 
+#define DHTPIN 5     // Digital pin connected to the DHT sensor
 #define TRIG_PIN 4
 #define ECHO_PIN 7
 
@@ -14,6 +14,9 @@ Servo myservo;
 
 unsigned long int duration;
 float cm;
+float temperature;
+float humidity;
+
 DHT_Unified dht(DHTPIN, DHTTYPE);
 
 uint32_t delayMS;
@@ -40,11 +43,12 @@ void loop() {
   // Get temperature event and print its value.
   sensors_event_t event;
   dht.temperature().getEvent(&event);
-
-  Serial.print(event.temperature); //온도 출력
+  temperature=event.temperature;
+  Serial.print(temperature); //온도 출력
   Serial.print(F("°C  "));
   dht.humidity().getEvent(&event);
-  Serial.print(event.relative_humidity); //습도 출력
+  humidity=event.relative_humidity;
+  Serial.print(humidity); //습도 출력
   Serial.print(F("%  "));
   digitalWrite(TRIG_PIN, HIGH); // 거리측정을 위해 TRIG_PIN을 HIGH로 설정
   delayMicroseconds(10); // 일정 시간(10 us) 동안 HIGH 상태 유지
@@ -55,8 +59,8 @@ void loop() {
   Serial.println("cm"); // 거리 단위 cm 표시 후 줄 바꿈(다음줄 첫 번째 칸으로
   delay(100); // 표시위치를 이동함
 
-  
-  if (event.relative_humidity > 50) { //습도가 50% 이상이라면
+ 
+  if (humidity > 50) { //습도가 50% 이상이라면
     tone(8, 330); //습도가 너무 높아 제습기 실행-> 우웅 소리 들림
     digitalWrite(3, HIGH); //노란 led 불 들어옴
   }
@@ -79,7 +83,7 @@ void loop() {
     digitalWrite(12, LOW); //빨간 led 꺼짐
   }
 
-  if (event.temperature > 35) { //온도가 35도 이상이면
+  if (temperature >= 35) { //온도가 35도 이상이면
     if (count2 == 0) { //켜지는 알림 한번만 들리게하기위해
       tone(8, 262); delay(500); //알림 소리 들림
       tone(8, 294); delay(500);
