@@ -60,7 +60,7 @@ void loop() {
   delay(100); // 표시위치를 이동함
 
  
-  if (humidity > 50) { //습도가 50% 이상이라면
+  if (humidity >=60) { //습도가 60% 이상이라면
     tone(8, 330); //습도가 너무 높아 제습기 실행-> 우웅 소리 들림
     digitalWrite(3, HIGH); //노란 led 불 들어옴
   }
@@ -83,7 +83,7 @@ void loop() {
     digitalWrite(12, LOW); //빨간 led 꺼짐
   }
 
-  if (temperature >= 35) { //온도가 35도 이상이면
+  if (temperature >= 30) { //온도가 30도 이상이면
     if (count2 == 0) { //켜지는 알림 한번만 들리게하기위해
       tone(8, 262); delay(500); //알림 소리 들림
       tone(8, 294); delay(500);
@@ -103,7 +103,7 @@ void loop() {
 
     }
   }
-  else { //온도가 35도 이하면
+  else { //온도가 30도 미만이면
     if (count == 0) { //꺼지는 알람 한번만 들리게하기위해
       tone(8, 330); delay(500);
       tone(8, 294); delay(500);
